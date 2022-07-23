@@ -23,9 +23,9 @@ def verify(plain_password, hashed_password):
 
 
 conf = ConnectionConfig(
-    MAIL_USERNAME="moyogundare@gmail.com",
-    MAIL_FROM ="moyogundare@gmail.com",
-    MAIL_PASSWORD="mkgsrzxyelttowbm",
+    MAIL_USERNAME="*",
+    MAIL_FROM ="*",
+    MAIL_PASSWORD="*",
     MAIL_PORT=587,
     MAIL_SERVER="smtp.gmail.com",
     MAIL_TLS= True,
