@@ -107,4 +107,25 @@ def Get_user(id: int,db : Session = Depends(get_db),current_admin:int = Depends(
 
     return user
 
-            
+@router.post("/admin/freeze/{id}")
+def Freeze_account(id: int,db : Session = Depends(get_db),current_admin:int = Depends(get_current_admin)):
+    account= db.query(models.Account).filter(models.Account.owner_id == id)
+    account_object = account.first()
+    if account_object == None:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Account not found")
+    account_object.acccount_status = 3
+    db.commit()
+    db.refresh(account_object)
+    return {"message":"Account has been Freezed"}
+
+
+@router.post("/admin/inactive/{id}")
+def Freeze_account(id: int,db : Session = Depends(get_db),current_admin:int = Depends(get_current_admin)):
+    account= db.query(models.Account).filter(models.Account.owner_id == id)
+    account_object = account.first()
+    if account_object == None:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Account not found")
+    account_object.acccount_status = 2
+    db.commit()
+    db.refresh(account_object)
+    return {"message":"Account has been made Inactive"}

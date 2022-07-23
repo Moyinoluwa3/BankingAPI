@@ -17,6 +17,7 @@ class Account(Base):
     account_number= Column(Integer,nullable=False,unique=True)
     amount= Column(Integer)
     type= Column(String(3))
+    acccount_status = Column(Integer,nullable=False)
     owner_id = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
     created_at = Column(TIMESTAMP(timezone=True), nullable=False, server_default=text('now()')) 
     

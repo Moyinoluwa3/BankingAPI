@@ -9,6 +9,7 @@ class Gender(str,Enum):
     MALE = "MALE"
     FEMALE = "FEMALE"
 
+
 class UserCreate(BaseModel):
     email: EmailStr
     password: str
@@ -71,6 +72,7 @@ class AccountOut(BaseModel):
     gender : Gender 
     amount: int
     type: str
+    acccount_status: int
     owner_id: int
     class Config:
         orm_mode = True
